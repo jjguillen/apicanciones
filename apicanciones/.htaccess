@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /servidor/practicasServidor/tema8/apicanciones/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule .* router.php/$0 [L]

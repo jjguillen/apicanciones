@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="" method="POST" id='post-form'>
+        <input type="text" name="title" id="title">
+        <input type="text" name="author" id="author">
+        <input type="text" name="release_date" id="release_date">
+        <input type="text" name="original_language" id="original_language">
+        <input type="text" name="genre" id="genre">
+        <input type="text" name="album" id="album">
+        <input type="text" name="duration" id="duration">
+        
+        <input type="submit" value="POST">    
+    </form>
+
+    <form action="" id='post-form-put'>
+        <input type="text" name="title" id="title">
+        <input type="text" name="author" id="author">
+        <input type="text" name="release_date" id="release_date">
+        <input type="text" name="original_language" id="original_language">
+        <input type="text" name="genre" id="genre">
+        <input type="text" name="album" id="album">
+        <input type="text" name="duration" id="duration">
+        
+        <input type="submit" value="PUT">    
+    </form>
+  
+<script>
+document.getElementById("post-form").addEventListener("submit", async function(e) {
+	e.preventDefault(); 
+	let formData = new FormData(e.target);
+    let res = await fetch("http://localhost/servidor/practicasservidor/tema8/apicanciones/songs", {
+                method: "POST",
+                cache: 'no-cache',
+                body: formData,
+    });
+
+    let data = await res.text();
+    console.log(data);
+});
+
+document.getElementById("post-form-put").addEventListener("submit", async function(e) {
+	e.preventDefault(); 
+    let formData = new FormData(e.target);
+    var object = {};
+    formData.forEach((value, key) => object[key] = value);
+    var json = JSON.stringify(object);
+    let res = await fetch("http://localhost/servidor/practicasservidor/tema8/apicanciones/songs", {
+                method: "PUT",
+                cache: 'no-cache',
+                body: json,
+    });
+
+    let data = await res.text();
+    console.log(data);
+});
+
+
+/*
+// Ejemplo implementando el metodo POST:
+async function postData(url = '', data = {}) {
+  // Opciones por defecto estan marcadas con un *
+  const response = await fetch(url, {
+    method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    //credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+       'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+postData('http://localhost/servidor/practicasservidor/tema8/apicanciones/songs', {
+    "title": "Manic Monday",
+    "author": "The Bangles",
+    "release_date": "1986-01-27",
+    "vote_average": 8.0,
+    "vote_count": 10,
+    "original_language": "en",
+    "genre": "poprock",
+    "album": "Different Light",
+    "duration": "3:06"
+})
+  .then(data => {
+    console.log(data); // JSON data parsed by `data.json()` call
+  });
+*/
+</script>
+
+</body>
+</html>
+
