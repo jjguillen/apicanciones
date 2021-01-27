@@ -5,7 +5,7 @@
     $method = $_SERVER['REQUEST_METHOD'];
     $uri = $_SERVER['REQUEST_URI'];
     
-    //Quitamos todos los paths hasta quedarnos con apicanciones
+    //Quitamos todos los paths hasta quedarnos  con apicanciones
     $uri = strstr($uri,"apicanciones");
 
     //Pasamos lo que queda de ruta a un array
