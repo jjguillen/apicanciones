@@ -1,5 +1,4 @@
 RewriteEngine On
-RewriteBase /
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
