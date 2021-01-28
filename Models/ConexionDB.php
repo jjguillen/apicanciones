@@ -26,3 +26,13 @@ class ConexionDB {
     }
 
 }
+
+try {
+    $conexion = ConexionDB::conectar("Songs");
+    $cursor = $conexion->Songs->find();
+    $result = json_encode($cursor->toArray());
+    echo $result;
+} catch(Exception $e) {
+    $result = self::json_message("Database error",false,2);
+}
+$conexion = null;
