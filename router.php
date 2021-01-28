@@ -16,6 +16,7 @@
     spl_autoload_register('controllers_autoload');
 
 
+    
     $method = $_SERVER['REQUEST_METHOD'];
     $uri = $_SERVER['REQUEST_URI'];
     
