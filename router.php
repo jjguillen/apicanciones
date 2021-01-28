@@ -1,6 +1,19 @@
 <?php
 
-    include_once("Controllers/Controller.php");
+    //include_once("Controllers/Controller.php");
+    function controllers_autoload($classname){
+        $ruta = "./Models/$clase.php";      
+        if (file_exists($ruta)){     
+            include_once $ruta;
+        }
+        $ruta = "./Controllers/$clase.php";      
+        if (file_exists($ruta)){     
+            include_once $ruta;
+        }
+    }
+    
+    spl_autoload_register('controllers_autoload');
+
 
     $method = $_SERVER['REQUEST_METHOD'];
     $uri = $_SERVER['REQUEST_URI'];
