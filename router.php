@@ -1,7 +1,7 @@
 <?php
 
     //include_once("Controllers/Controller.php");
-    function controllers_autoload($classname){
+    function controllers_autoload($clase){
         $ruta = "./Models/$clase.php";      
         if (file_exists($ruta)){     
             include_once $ruta;
@@ -10,6 +10,7 @@
         if (file_exists($ruta)){     
             include_once $ruta;
         }
+
     }
     
     spl_autoload_register('controllers_autoload');
