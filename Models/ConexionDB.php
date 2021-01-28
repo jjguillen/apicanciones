@@ -2,7 +2,7 @@
 namespace Songs;
 use MongoDB\Client;
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 class ConexionDB {
 
