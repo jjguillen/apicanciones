@@ -15,6 +15,7 @@ class ConexionDB {
             self::$conexion = (new Client($host))->{$database};
         } catch (Exception $e){
             echo $e->getMessage();
+            file_put_contents("php://stderr", $e->getMessage());
         }
 
         return self::$conexion;
