@@ -19,7 +19,7 @@
          */
         public function handle_base($method) {
             $this->method = $method;
-            
+error_log("Controlador ");            
             switch($method){
                 case 'PUT':
                     $this->create_song();
